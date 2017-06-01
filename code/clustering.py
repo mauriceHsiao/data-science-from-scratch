@@ -44,7 +44,7 @@ def squared_clustering_errors(inputs, k):
     clusterer.train(inputs)
     means = clusterer.means
     assignments = map(clusterer.classify, inputs)
-    
+
     return sum(squared_distance(input,means[cluster])
                for input, cluster in zip(inputs, assignments))
 
@@ -65,7 +65,7 @@ def plot_squared_clustering_errors(plt):
 
 def recolor_image(input_file, k=5):
 
-    img = mpimg.imread(path_to_png_file)
+    img = mpimg.imread(input_file)
     pixels = [pixel for row in img for pixel in row]
     clusterer = KMeans(k)
     clusterer.train(pixels) # this might take a while    
